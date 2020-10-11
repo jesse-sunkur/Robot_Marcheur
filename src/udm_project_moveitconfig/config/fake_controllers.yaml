@@ -1,0 +1,24 @@
+controller_list:
+  - name: fake_Leg1_controller
+    joints:
+      - hand_to_Leg1_Section1
+      - Leg1_Section1_to_Leg1_Section2
+      - Leg1_Section2_to_Leg1_Section3
+  - name: fake_Leg2_controller
+    joints:
+      - hand_to_Leg2_Section1
+      - Leg2_Section1_to_Leg2_Section2
+      - Leg2_Section2_to_Leg2_Section3
+  - name: fake_Leg3_controller
+    joints:
+      - hand_to_Leg3_Section1
+      - Leg3_Section1_to_Leg3_Section2
+      - Leg3_Section2_to_Leg3_Section3
+  - name: fake_Leg4_controller
+    joints:
+      - hand_to_Leg4_Section1
+      - Leg4_Section1_to_Leg4_Section2
+      - Leg4_Section2_to_Leg4_Section3
+initial:  # Define initial robot poses.
+  - group: Leg4
+    pose: Walking

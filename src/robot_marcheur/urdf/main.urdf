@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot name="hand">
+
+    <material name="green">
+        <color rgba="0 1 0 0.5"/>
+    </material>
+    <material name="blue">
+        <color rgba="0 0 1 0.5"/>
+    </material>
+    <material name= "red">
+        <color rgba="1 0 0 0.5"/>
+    </material>
+
+
+<!-- Main Chassis/Body -->
+<link name="map"/>
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="2 1 0.2" />
+      </geometry>
+       <material name="black">
+        <color rgba="0 0 0 0.5"/>
+      </material>
+    </visual>
+  </link>
+
+<!-- Leg Sections -->
+  <link name="Leg1_Section1">
+    <visual>
+      <geometry>
+        <cylinder length="0.4" radius="0.09"/>
+      </geometry>
+      <material name = "red"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.15"/>
+    </visual>
+  </link>
+
+<link name="Leg1_Section2">
+    <visual>
+      <geometry>
+        <cylinder length="0.4" radius="0.09"/>
+      </geometry>
+      <material name = "blue"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.15"/>
+    </visual>
+  </link>
+
+<link name="Leg1_Section3">
+    <visual>
+      <geometry>
+        <cylinder length="0.4" radius="0.09"/>
+      </geometry>
+      <material name = "green"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.15"/>
+    </visual>
+  </link>
+
+<link name="Leg1_Section4">
+    <visual>
+      <geometry>
+        <cylinder length="0.06" radius="0.15"/>
+      </geometry>
+      <material name = "blue"/>
+      <origin rpy="0 0 0" xyz="0 0 -0.0"/>
+    </visual>
+  </link>
+
+<!-- Joint Configurations-->
+
+   <joint name="hand" type="revolute">
+    <parent link="map"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="1" velocity="0.5"/>
+  </joint>
+
+ <joint name="hand_to_Leg1_Section1" type="revolute">
+    <parent link="base_link"/>
+    <child link="Leg1_Section1"/>
+    <origin xyz="0.8 0.3 0"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="1" velocity="0.5"/>
+  </joint>
+
+ <joint name="Leg1_Section1_to_Leg1_Section2" type="revolute">
+    <parent link="Leg1_Section1"/>
+    <child link="Leg1_Section2"/>
+    <origin xyz="0 0 -0.35"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="1" velocity="0.5"/>
+  </joint>
+
+ <joint name="Leg1_Section2_to_Leg1_Section3" type="revolute">
+    <parent link="Leg1_Section2"/>
+    <child link="Leg1_Section3"/>
+    <origin xyz="0 0 -0.35"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="1" velocity="0.5"/>
+  </joint>
+
+ <joint name="Leg1_Section3_to_Leg1_Section4" type="fixed">
+    <parent link="Leg1_Section3"/>
+    <child link="Leg1_Section4"/>
+    <origin xyz="0 0 -0.35"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="0.0" upper="1" velocity="0.5"/>
+  </joint>
+
+</robot>
